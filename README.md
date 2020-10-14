@@ -31,3 +31,12 @@ The evolution of smartphones has made playing intuitive, quickly completed games
 with few controls, and a clear goal are easy to play on a bus ride or while waiting for a friend.
 Because of my love for video games and inspiration from the current market of mobile games I've decided
 to make *Don't Get Hit*. 
+
+----------
+
+## **User Stories**
+
+- As a user, I want to be able to add my name to a list of recommended names.
+- As a user, I want to be able to select a color for my character.
+- As a user, I want to be able to select the difficulty of level.
+- As a user, I want to be able to skip levels that I've already completed under that name.
