@@ -36,7 +36,7 @@ to make *Don't Get Hit*.
 
 ## **User Stories**
 
-- As a user, I want to be able to add my name to a list of recommended names.
+- As a user, I want to be able to add my name to a list of character names.
 - As a user, I want to be able to select a color for my character.
 - As a user, I want to be able to select the difficulty of level.
-- As a user, I want to be able to skip levels that I've already completed under that name.
+- As a user, I want to be able to access a short "how to play" explanation.
