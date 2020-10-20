@@ -1,6 +1,5 @@
 package ui;
 
-import com.sun.tools.javac.processing.JavacMessager;
 import model.Level;
 import model.Player;
 
@@ -127,13 +126,5 @@ public class PlayerUI {
         System.out.println("Current Name: " + player.getPlayerName());
         System.out.println("Current Color: " + player.getColor());
         System.out.println("Current Level: " + player.getLevelName());
-    }
-
-    // EFFECTS: displays color option menu
-    private void colorMenu() {
-        System.out.println("\nSelect from color options:");
-        System.out.println("\tr -> red");
-        System.out.println("\tb -> blue");
-        System.out.println("\tg -> green");
     }
 }
