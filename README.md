@@ -36,7 +36,12 @@ to make *Don't Get Hit*.
 
 ## **User Stories**
 
-- As a user, I want to be able to add my name to a list of character names.
+- As a user, I want to be able to change my character's name.
 - As a user, I want to be able to select a color for my character.
-- As a user, I want to be able to select the difficulty of level.
+- As a user, I want to be able to select the difficulty of level based on
+what levels I have already completed.
 - As a user, I want to be able to access a short "how to play" explanation.
+- As a user, I want to be able to save my current game, which saves my character's
+name, color, and stages available.
+- As a user, I want to be able to load my previously saved file with my character's
+name, color, and stages available.
