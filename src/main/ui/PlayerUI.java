@@ -2,15 +2,23 @@ package ui;
 
 import model.Level;
 import model.Player;
+import persistence.FileWriter;
+import persistence.FileReader;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 // Player creation application
 public class PlayerUI {
+    private static final String JSON_STORE = "./data/savedPlayer.json";
     private String name;
     private String color;
     private Scanner scanner;
     private Player player;
+
+    private FileWriter fileWriter;
+    private FileReader fileReader;
 
     // EFFECTS: runs the player creation application
     public PlayerUI() {
@@ -23,7 +31,8 @@ public class PlayerUI {
         boolean run = true;
         String command;
 
-        init(" ", " ");
+        init(
+                " ", " ");
 
         while (run) {
             mainMenu();
@@ -48,6 +57,10 @@ public class PlayerUI {
 
         if (command.equals("n")) {
             newName(scanner);
+        } else if (command.equals("load")) {
+            loadPlayer();
+        } else if (command.equals("save")) {
+            savePlayer();
         } else if (command.equals("c")) {
             newColour(scanner);
         } else if (command.equals("l")) {
@@ -59,6 +72,10 @@ public class PlayerUI {
         }
     }
 
+    // Modifies: this
+    // Effects: if the level is available, assigns it as the current level; otherwise
+    //          says that the level is locked. If a level is selected but doesn't exist,
+    //          returns a statement for the user to input a valid level.
     private void selectLevel(Scanner scanner) {
         boolean selectingLevel = true;
         while (selectingLevel) {
@@ -72,6 +89,7 @@ public class PlayerUI {
                 System.out.println("you've selected level " + scanner1);
                 Level l = player.getLevelFromName(scanner1);
                 player.setLevel(l);
+                promptDoLevel(scanner); // TODO, might be wrong!
                 selectingLevel = false;
 
             } else if (player.getNamesLockedLevels().contains(scanner1)) {
@@ -82,6 +100,31 @@ public class PlayerUI {
         }
     }
 
+    // Effects: Asks the user whether they want to complete the current level
+    //          if yes, doLevel, if no, wish them luck next time, otherwise continue prompting
+    // TODO: fix this implementation
+    public void promptDoLevel(Scanner scanner) {
+        boolean waitingToDoLevel = true;
+        while (waitingToDoLevel) {
+            System.out.println("Do level? " + player.currentLevel);
+            System.out.println("\ty -> yes");
+            System.out.println("\tn -> no");
+
+            if (scanner.equals("y")) {
+                player.doLevel(player.currentLevel);
+                System.out.println("Level complete, next level: " + player.lockedLevels.get(0));
+                waitingToDoLevel = false;
+            } else if (scanner.equals("n")) {
+                System.out.println("better luck next time");
+                waitingToDoLevel = false;
+            } else {
+                System.out.println("Would you like to complete this level?");
+            }
+        }
+    }
+
+    // Modifies: this
+    // Effects: Sets the character's color to one of red or blue
     private void newColour(Scanner scanner) {
         System.out.println("Select your color: Red or Blue");
         boolean correctColour = true;
@@ -99,6 +142,8 @@ public class PlayerUI {
         }
     }
 
+    // Modifies: this
+    // Effects: Sets the character's name to the given input
     private void newName(Scanner scanner) {
         System.out.println("Enter your name: ");
         String str = scanner.nextLine();
@@ -106,17 +151,43 @@ public class PlayerUI {
         System.out.println("you character's name is: " + player.getPlayerName());
     }
 
+    // Modifies: this
+    // EFFECTS: saves the player to file
+    private void savePlayer() {
+        try {
+            fileWriter.open();
+            fileWriter.write(player);
+            fileWriter.close();
+            System.out.println("Saved " + player.getPlayerName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads savedPlayer from file
+    private void loadPlayer() {
+        try {
+            player = fileReader.read();
+            System.out.println("Loaded " + player.getPlayerName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+
     // MODIFIES: this
     // EFFECTS: initializes
     public void init(String name, String color) {
-        this.player = new Player(name, color);
+        this.player = new Player(name, color, player.availableLevels, player.lockedLevels);
+        player.setupLevels();
     }
 
 
     // EFFECTS: displays menu of options to user
-
     private void mainMenu() {
         System.out.println("\nSelect from:");
+        System.out.println("\tsave -> Save Game");
+        System.out.println("\tload -> Load Game \n");
         System.out.println("\tn -> New Name");
         System.out.println("\tc -> New Color");
         System.out.println("\tl -> Select Level");
