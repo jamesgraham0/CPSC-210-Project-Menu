@@ -7,6 +7,7 @@ import persistence.FileReader;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 // Player creation application
@@ -30,9 +31,9 @@ public class PlayerUI {
     private void runGame() {
         boolean run = true;
         String command;
-
-        init(
-                " ", " ");
+        this.fileWriter = new FileWriter(JSON_STORE);
+        this.fileReader = new FileReader(JSON_STORE);
+        init();
 
         while (run) {
             mainMenu();
@@ -102,19 +103,22 @@ public class PlayerUI {
 
     // Effects: Asks the user whether they want to complete the current level
     //          if yes, doLevel, if no, wish them luck next time, otherwise continue prompting
-    // TODO: fix this implementation
     public void promptDoLevel(Scanner scanner) {
         boolean waitingToDoLevel = true;
         while (waitingToDoLevel) {
-            System.out.println("Do level? " + player.currentLevel);
+            System.out.println("Do level? " + player.currentLevel.getLevelName());
             System.out.println("\ty -> yes");
             System.out.println("\tn -> no");
 
-            if (scanner.equals("y")) {
+            String scanner2 = scanner.nextLine();
+            if (scanner2.equals("y")) {
+                if (player.availableLevels.contains(scanner2)) {
+                    System.out.println("Level complete, next level: " + player.currentLevel.getLevelName());
+                }
                 player.doLevel(player.currentLevel);
-                System.out.println("Level complete, next level: " + player.lockedLevels.get(0));
+                System.out.println("Level complete, next level: " + player.currentLevel.getLevelName());
                 waitingToDoLevel = false;
-            } else if (scanner.equals("n")) {
+            } else if (scanner2.equals("n")) {
                 System.out.println("better luck next time");
                 waitingToDoLevel = false;
             } else {
@@ -177,9 +181,14 @@ public class PlayerUI {
 
     // MODIFIES: this
     // EFFECTS: initializes
-    public void init(String name, String color) {
-        this.player = new Player(name, color, player.availableLevels, player.lockedLevels);
-        player.setupLevels();
+    public void init() {
+        ArrayList<Level> empty1 = new ArrayList<>();
+        ArrayList<Level> empty2 = new ArrayList<>();
+
+        player = new Player(" ", " ", empty1, empty2);
+
+//        FileWriter fileWriter = new FileWriter(JSON_STORE);
+//        FileReader fileReader = new FileReader(JSON_STORE);
     }
 
 

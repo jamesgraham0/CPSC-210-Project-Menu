@@ -39,6 +39,8 @@ public class Player implements Json {
         this.availableLevels.add(level1);
         this.lockedLevels.add(level2);
         this.lockedLevels.add(level3);
+
+        this.currentLevel = availableLevels.get(availableLevels.size() - 1);
     }
 
     public String getPlayerName() {
@@ -92,12 +94,15 @@ public class Player implements Json {
     //          adds it to available levels, and removes it from lockedLevels.
     public void doLevel(Level level) {
         if (availableLevels.get(availableLevels.size() - 1) == level) {
-            currentLevel = lockedLevels.get(0);
-            availableLevels.add(lockedLevels.get(0));
-            lockedLevels.remove(0);
+            if (!lockedLevels.isEmpty()) {
+                currentLevel = lockedLevels.get(0);
+                availableLevels.add(lockedLevels.get(0));
+                lockedLevels.remove(0);
+            }
         }
     }
 
+    // Effects: returns a list of all available level names
     public ArrayList<String> getNamesAvailableLevels() {
         ArrayList<String> namesOfAvailableLevels = new ArrayList<String>();
         for (Level level : availableLevels) {
@@ -107,7 +112,7 @@ public class Player implements Json {
     }
 
     public ArrayList<String> getNamesLockedLevels() {
-        ArrayList<String> namesOfLockedLevels = new ArrayList<String>();
+        ArrayList<String> namesOfLockedLevels = new ArrayList<>();
         for (Level level : lockedLevels) {
             namesOfLockedLevels.add(level.getLevelName());
         }
@@ -120,7 +125,7 @@ public class Player implements Json {
         json.put("name", name);
         json.put("color", color);
         json.put("available levels", availableLevelsToJson());
-//        json.put("locked levels", lockedLevelsToJson());
+        json.put("locked levels", lockedLevelsToJson());
         return json;
     }
 
@@ -130,22 +135,28 @@ public class Player implements Json {
 
         // available levels
         for (Level level : availableLevels) {
-            jsonAvailableLevels.put(level.toJson());
+            JSONObject jsonLevel = new JSONObject();
+            jsonLevel.put("name", level.getLevelName());
+            jsonLevel.put("difficulty", level.getLevelDifficulty());
+//            jsonAvailableLevels.put(level.toJson());
+            jsonAvailableLevels.put(jsonLevel);
         }
         return jsonAvailableLevels;
     }
-//
-//
-//
-//    // EFFECTS: return the locked levels as json array
-//    private JSONArray lockedLevelsToJson() {
-//        JSONArray jsonLockedLevels = new JSONArray();
-//
-//        //locked levels
-//        for (Level level : savedPlayer.get(0).getLockedLevels()) {
+
+    // EFFECTS: return the available levels as JSON Array
+    private JSONArray lockedLevelsToJson() {
+        JSONArray jsonLockedLevels = new JSONArray();
+
+        // available levels
+        for (Level level : lockedLevels) {
+            JSONObject jsonLevel = new JSONObject();
+            jsonLevel.put("name", level.getLevelName());
+            jsonLevel.put("difficulty", level.getLevelDifficulty());
+            jsonLockedLevels.put(jsonLevel);
 //            jsonLockedLevels.put(level.toJson());
-//        }
-//        return jsonLockedLevels;
-//    }
+        }
+        return jsonLockedLevels;
+    }
 
 }

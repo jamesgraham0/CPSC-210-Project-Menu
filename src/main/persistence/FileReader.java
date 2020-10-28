@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.stream.Stream;
 
 import org.json.*;
@@ -40,32 +41,31 @@ public class FileReader {
         return contentBuilder.toString();
     }
 
+    public ArrayList parser(JSONArray jsonArray) {
+        ArrayList<Level> availableLevels = new ArrayList<>();
+        for (int i = 0; i < jsonArray.length(); i++) {
+            Level level = new Level(jsonArray.getJSONObject(i).getString("name"),
+                    jsonArray.getJSONObject(i).getString("difficulty"));
+
+            availableLevels.add(level);
+        }
+        return availableLevels;
+    }
+
     // EFFECTS: parses SavedPlayer from JSON object and returns it
     private Player parsePlayer(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        Player player = new Player(name, "red", null, null);
-        addAvailableLevels(player, jsonObject);
+        String color = jsonObject.getString("color");
+        JSONArray availableLevels = jsonObject.getJSONArray("available levels");
+        JSONArray lockedLevels = jsonObject.getJSONArray("locked levels");
+        ArrayList<Level> al1 = new ArrayList<>();
+        al1 = parser(availableLevels);
+        ArrayList<Level> al2 = new ArrayList<>();
+        al2 = parser(lockedLevels);
+        Player player = new Player(name, color, new ArrayList<>(), new ArrayList<>());
+        player.availableLevels = al1;
+        player.lockedLevels = al2;
         return player;
-    }
-
-    // MODIFIES: wr
-    // EFFECTS: parses thingies from JSON object and adds them to workroom
-    private void addAvailableLevels(Player player, JSONObject jsonObject) {
-        JSONArray jsonArray = jsonObject.getJSONArray("available levels");
-        for (Object json : jsonArray) {
-            JSONObject savedPlayer = (JSONObject) json;
-            addAvailableLevel(player, savedPlayer);
-        }
-    }
-
-    // MODIFIES: wr
-    // EFFECTS: parses thingy from JSON object and adds it to workroom
-    private void addAvailableLevel(Player player, JSONObject jsonObject) {
-        String name = jsonObject.getString("available levels");
-        String difficulty = jsonObject.getString("difficulty");
-        Level level = new Level(name, difficulty);
-
-        player.availableLevels.add(level);
     }
 
 }
