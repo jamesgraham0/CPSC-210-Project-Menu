@@ -7,13 +7,12 @@
         {
             "difficulty": "2",
             "name": "medium"
-        },
-        {
-            "difficulty": "3",
-            "name": "hard"
         }
     ],
     "color": "blue",
     "name": "james",
-    "locked levels": []
+    "locked levels": [{
+        "difficulty": "3",
+        "name": "hard"
+    }]
 }

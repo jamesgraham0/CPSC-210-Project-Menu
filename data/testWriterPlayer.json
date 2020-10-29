@@ -1,9 +1,18 @@
 {
-  "devDependencies": {
-    "jest": "^23.6.0",
-    "@types/jest": "^23.3.12"
-  },
-  "scripts": {
-    "test": "jest"
-  }
+  "available levels": [
+    {
+      "difficulty": "1",
+      "name": "easy"
+    },
+    {
+      "difficulty": "2",
+      "name": "medium"
+    }
+  ],
+  "color": "blue",
+  "name": "james",
+  "locked levels": [{
+    "difficulty": "3",
+    "name": "hard"
+  }]
 }
