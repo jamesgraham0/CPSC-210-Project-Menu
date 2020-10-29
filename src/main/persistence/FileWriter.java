@@ -5,8 +5,11 @@ import org.json.JSONObject;
 
 import java.io.*;
 
+/**
+ * This class is exactly like the example given in class
+ */
 
-// Writes JSON representation of SavedPlayer to file
+// Writes JSON representation of Player to file (savedPlayer)
 public class FileWriter {
     private static final int TAB = 4;
     private PrintWriter writer;

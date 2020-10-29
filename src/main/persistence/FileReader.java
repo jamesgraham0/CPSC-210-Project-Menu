@@ -12,8 +12,11 @@ import java.util.stream.Stream;
 
 import org.json.*;
 
+/**
+ * This class is based largely off the example given in class
+ */
 
-// A reader that reads the JSON version of the savedPlayer in the file
+// A reader that reads the JSON version of the Player in the file (savedPlayer)
 public class FileReader {
     private String source;
 
@@ -22,7 +25,7 @@ public class FileReader {
         this.source = source;
     }
 
-    // EFFECTS: reads SavedPlayer from file and returns it;
+    // EFFECTS: reads Player from file and returns it;
     // throws IOException if an error occurs reading data from file
     public Player read() throws IOException {
         String jsonData = readFile(source);
@@ -41,6 +44,8 @@ public class FileReader {
         return contentBuilder.toString();
     }
 
+    // Effects: parses the available levels from the JSON file and returns it
+    //          as an array list
     public ArrayList parser(JSONArray jsonArray) {
         ArrayList<Level> availableLevels = new ArrayList<>();
         for (int i = 0; i < jsonArray.length(); i++) {
@@ -52,7 +57,7 @@ public class FileReader {
         return availableLevels;
     }
 
-    // EFFECTS: parses SavedPlayer from JSON object and returns it
+    // EFFECTS: parses the saved player from JSON object and returns it
     private Player parsePlayer(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         String color = jsonObject.getString("color");

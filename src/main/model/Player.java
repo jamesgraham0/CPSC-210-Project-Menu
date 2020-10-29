@@ -8,17 +8,16 @@ import java.util.ArrayList;
 
 // Creates a player with a unique Name and Color
 public class Player implements Json {
-    private String name; // name of player
-    public ArrayList<Level> availableLevels;  // keeps track of available levels
-    public ArrayList<Level> lockedLevels;    // keeps track of locked levels
-    private String color;  // color of player
-    public Level currentLevel;   // Level in which the player plays the game
+    private String name;
+    public ArrayList<Level> availableLevels;
+    public ArrayList<Level> lockedLevels;
+    private String color;
+    public Level currentLevel;
 
-    // constructs a new Player with a name and color
+    // constructs a new Player with a name, color, available and locked levels.
     // REQUIRES: n is a non-empty name (String), and
-    //           color is one of red or blue.
-    //EFFECTS: creates a player with a name and color,
-    //         and sets up the levels
+    //           color is one of red or blue (String).
+    //EFFECTS: creates a player with a name and color, and sets up the levels
     public Player(String n, String c, ArrayList<Level> availableLevels, ArrayList<Level> lockedLevels) {
         this.name = n;
         this.color = c;
@@ -111,6 +110,7 @@ public class Player implements Json {
         return namesOfAvailableLevels;
     }
 
+    // Effects: returns a list of all locked level names
     public ArrayList<String> getNamesLockedLevels() {
         ArrayList<String> namesOfLockedLevels = new ArrayList<>();
         for (Level level : lockedLevels) {
@@ -119,6 +119,9 @@ public class Player implements Json {
         return namesOfLockedLevels;
     }
 
+    /**
+     * Next 3 methods are based largely off the example given in class
+     */
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -129,32 +132,28 @@ public class Player implements Json {
         return json;
     }
 
-    // EFFECTS: return the available levels as JSON Array
+    // EFFECTS: returns the available levels as JSON Array
     private JSONArray availableLevelsToJson() {
         JSONArray jsonAvailableLevels = new JSONArray();
 
-        // available levels
         for (Level level : availableLevels) {
             JSONObject jsonLevel = new JSONObject();
             jsonLevel.put("name", level.getLevelName());
             jsonLevel.put("difficulty", level.getLevelDifficulty());
-//            jsonAvailableLevels.put(level.toJson());
             jsonAvailableLevels.put(jsonLevel);
         }
         return jsonAvailableLevels;
     }
 
-    // EFFECTS: return the available levels as JSON Array
+    // EFFECTS: returns the locked levels as JSON Array
     private JSONArray lockedLevelsToJson() {
         JSONArray jsonLockedLevels = new JSONArray();
 
-        // available levels
         for (Level level : lockedLevels) {
             JSONObject jsonLevel = new JSONObject();
             jsonLevel.put("name", level.getLevelName());
             jsonLevel.put("difficulty", level.getLevelDifficulty());
             jsonLockedLevels.put(jsonLevel);
-//            jsonLockedLevels.put(level.toJson());
         }
         return jsonLockedLevels;
     }

@@ -42,6 +42,6 @@ to make *Don't Get Hit*.
 what levels I have already completed.
 - As a user, I want to be able to access a short "how to play" explanation.
 - As a user, I want to be able to save my current game, which saves my character's
-name, color, and stages available.
+name, color, and available/locked levels.
 - As a user, I want to be able to load my previously saved file with my character's
-name, color, and stages available.
+name, color, and available/locked levels.

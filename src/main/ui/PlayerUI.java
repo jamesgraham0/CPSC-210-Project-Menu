@@ -13,9 +13,6 @@ import java.util.Scanner;
 // Player creation application
 public class PlayerUI {
     private static final String JSON_STORE = "./data/savedPlayer.json";
-    private String name;
-    private String color;
-    private Scanner scanner;
     private Player player;
 
     private FileWriter fileWriter;
@@ -90,7 +87,7 @@ public class PlayerUI {
                 System.out.println("you've selected level " + scanner1);
                 Level l = player.getLevelFromName(scanner1);
                 player.setLevel(l);
-                promptDoLevel(scanner); // TODO, might be wrong!
+                promptDoLevel(scanner);
                 selectingLevel = false;
 
             } else if (player.getNamesLockedLevels().contains(scanner1)) {
@@ -155,6 +152,9 @@ public class PlayerUI {
         System.out.println("you character's name is: " + player.getPlayerName());
     }
 
+    /**
+     * savePlayer() and loadPlayer() methods are based on the example given in class
+     */
     // Modifies: this
     // EFFECTS: saves the player to file
     private void savePlayer() {
@@ -186,9 +186,6 @@ public class PlayerUI {
         ArrayList<Level> empty2 = new ArrayList<>();
 
         player = new Player(" ", " ", empty1, empty2);
-
-//        FileWriter fileWriter = new FileWriter(JSON_STORE);
-//        FileReader fileReader = new FileReader(JSON_STORE);
     }
 
 
