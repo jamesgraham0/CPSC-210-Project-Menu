@@ -1,9 +1,6 @@
 package persistence;
 
 import model.Level;
-import model.Player;
-
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

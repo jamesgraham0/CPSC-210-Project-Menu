@@ -1,7 +1,5 @@
 package model;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -170,42 +168,5 @@ class PlayerTest {
         assertEquals(al, player.getNamesAvailableLevels());
         assertEquals(alLocked, player.getNamesLockedLevels());
     }
-
-//    @Test
-//    void testToJson() {
-//        JSONObject json = new JSONObject();
-//
-//        json.put("name", name);
-//        json.put("color", color);
-//        json.put("available levels", availableLevelsToJson());
-//        json.put("locked levels", lockedLevelsToJson());
-//        return json;
-//    }
-//
-//    // EFFECTS: returns the available levels as JSON Array
-//    private JSONArray availableLevelsToJson() {
-//        JSONArray jsonAvailableLevels = new JSONArray();
-//
-//        for (Level level : availableLevels) {
-//            JSONObject jsonLevel = new JSONObject();
-//            jsonLevel.put("name", level.getLevelName());
-//            jsonLevel.put("difficulty", level.getLevelDifficulty());
-//            jsonAvailableLevels.put(jsonLevel);
-//        }
-//        return jsonAvailableLevels;
-//    }
-//
-//    // EFFECTS: returns the locked levels as JSON Array
-//    private JSONArray lockedLevelsToJson() {
-//        JSONArray jsonLockedLevels = new JSONArray();
-//
-//        for (Level level : lockedLevels) {
-//            JSONObject jsonLevel = new JSONObject();
-//            jsonLevel.put("name", level.getLevelName());
-//            jsonLevel.put("difficulty", level.getLevelDifficulty());
-//            jsonLockedLevels.put(jsonLevel);
-//        }
-//        return jsonLockedLevels;
-    // }
 
 }

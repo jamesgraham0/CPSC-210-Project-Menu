@@ -103,7 +103,7 @@ public class Player implements Json {
 
     // Effects: returns a list of all available level names
     public ArrayList<String> getNamesAvailableLevels() {
-        ArrayList<String> namesOfAvailableLevels = new ArrayList<String>();
+        ArrayList<String> namesOfAvailableLevels = new ArrayList<>();
         for (Level level : availableLevels) {
             namesOfAvailableLevels.add(level.getLevelName());
         }
@@ -123,6 +123,7 @@ public class Player implements Json {
      * Next 3 methods are based largely off the example given in class
      */
     @Override
+    // Effects: creates a player in JSON format
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);

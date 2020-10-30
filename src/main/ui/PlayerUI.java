@@ -98,6 +98,7 @@ public class PlayerUI {
         }
     }
 
+    // Modifies: this
     // Effects: Asks the user whether they want to complete the current level
     //          if yes, doLevel, if no, wish them luck next time, otherwise continue prompting
     public void promptDoLevel(Scanner scanner) {
