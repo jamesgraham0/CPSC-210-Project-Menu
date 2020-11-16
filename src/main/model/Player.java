@@ -1,17 +1,20 @@
 package model;
 
+import image.Image;
+import image.ImageFactory;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Json;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 // Creates a player with a unique Name and Color
 public class Player implements Json {
-    private String name;
+    private static String name;
     public ArrayList<Level> availableLevels;
     public ArrayList<Level> lockedLevels;
-    private String color;
+    private static String color;
     public Level currentLevel;
 
     // constructs a new Player with a name, color, available and locked levels.
@@ -19,7 +22,7 @@ public class Player implements Json {
     //           color is one of red or blue (String).
     //EFFECTS: creates a player with a name and color, and sets up the levels
     public Player(String n, String c, ArrayList<Level> availableLevels, ArrayList<Level> lockedLevels) {
-        this.name = n;
+        name = n;
         this.color = c;
         this.availableLevels = availableLevels;
         this.lockedLevels = lockedLevels;
@@ -42,11 +45,11 @@ public class Player implements Json {
         this.currentLevel = availableLevels.get(availableLevels.size() - 1);
     }
 
-    public String getPlayerName() {
+    public static String getPlayerName() {
         return name;
     }
 
-    public String getColor() {
+    public static String getColor() {
         return color;
     }
 

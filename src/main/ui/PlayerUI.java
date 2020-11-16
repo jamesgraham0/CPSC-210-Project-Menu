@@ -2,8 +2,8 @@ package ui;
 
 import model.Level;
 import model.Player;
-import persistence.FileWriter;
 import persistence.FileReader;
+import persistence.FileWriter;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -158,7 +158,7 @@ public class PlayerUI {
      */
     // Modifies: this
     // EFFECTS: saves the player to file
-    private void savePlayer() {
+    public void savePlayer() {
         try {
             fileWriter.open();
             fileWriter.write(player);
@@ -171,7 +171,7 @@ public class PlayerUI {
 
     // MODIFIES: this
     // EFFECTS: loads savedPlayer from file
-    private void loadPlayer() {
+    public void loadPlayer() {
         try {
             player = fileReader.read();
             System.out.println("Loaded " + player.getPlayerName() + " from " + JSON_STORE);
