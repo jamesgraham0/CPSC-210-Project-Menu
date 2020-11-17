@@ -4,14 +4,16 @@ package panels;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.*;
 
 
-import model.Enemies;
-import model.Game;
-import model.Player;
-import model.PlayerVisual;
+import image.Image;
+import image.ImageFactory;
+import model.*;
+import persistence.FileReader;
+import persistence.FileWriter;
 
 
 /*
@@ -19,22 +21,32 @@ import model.PlayerVisual;
  */
 @SuppressWarnings("serial")
 public class MainMenuPanel extends JPanel implements ActionListener {
-    private ArrayList<JButton> buttons;
+    private static final String JSON_STORE = "./data/savedPlayer.json";
+    private FileReader fileReader;
+    private FileWriter fileWriter;
+
+
     private Game game;
     private Player player;
     private BottomPanel bottomPanel;
     private SavedPlayerPanel savedPlayerPanel;
+    private ArrayList<Level> availableLevels;
+    private ArrayList<Level> lockedLevels;
 
-    // Constructs a game panel
+    // Constructs a main menu panel
     // effects:  sets size and background colour of panel,
     //           updates this with the game to be displayed
     public MainMenuPanel(Game g) {
+        this.fileWriter = new FileWriter(JSON_STORE);
+        this.fileReader = new FileReader(JSON_STORE);
+
         setPreferredSize(new Dimension(Game.WIDTH, Game.HEIGHT));
-        setBackground(Color.GRAY);
+        setBackground(Color.DARK_GRAY);
         this.game = g;
-//        savedPlayerPanel = new SavedPlayerPanel(game);
-//        add(savedPlayerPanel, BorderLayout.AFTER_LINE_ENDS);
+        savedPlayerPanel = new SavedPlayerPanel(g);
+        add(savedPlayerPanel, BorderLayout.CENTER);
         addButtons();
+
     }
 
     @Override
@@ -42,17 +54,25 @@ public class MainMenuPanel extends JPanel implements ActionListener {
         super.paintComponent(g);
     }
 
-    // TODO: implement
+    // TODO: implement level parts
     public void actionPerformed(ActionEvent e) {
         if ("load".equals(e.getActionCommand())) {
-//            savedPlayerPanel.setNameText("James");
-//            savedPlayerPanel.setColorText(Player.getColor());
-//            savedPlayerPanel.setAvailableLevels(Player.getAvailableLevels());
-//            savedPlayerPanel.setLockedLevels(Player.getLockedLevels());
+            try {
+                player = fileReader.read();
+                savedPlayerPanel.setNameTextBox(Player.getPlayerName());
+                savedPlayerPanel.setColorTextBox(Player.getColor());
+            } catch (IOException i) {
+                System.out.println("Unable to read from file: " + JSON_STORE);
+            }
         } else if ("save".equals(e.getActionCommand())) {
-            System.out.println("saved");
+            try {
+                player = fileReader.read();
+            } catch (IOException i) {
+                System.out.println("Unable to read from file: " + JSON_STORE);
+            }
         } else if ("new game".equals(e.getActionCommand())) {
-            System.out.println("new game");
+            savedPlayerPanel.setNameTextBox("");
+            savedPlayerPanel.setColorTextBox("");
         } else if ("how to play".equals(e.getActionCommand())) {
             System.out.println("how to play");
         }

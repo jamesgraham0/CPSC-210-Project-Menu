@@ -37,11 +37,8 @@ public class DontGetHit extends JFrame {
         super("Don't Get Hit");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         game = new Game();
-//        bottomPanel = new BottomPanel(game);
-//        gamePanel = new GamePanel(game);
-//        add(gamePanel);
-        initialize();
 
+        initialize();
         addKeyListener(new KeyHandler());
         pack();
         centreOnScreen();
@@ -50,8 +47,6 @@ public class DontGetHit extends JFrame {
     }
 
     private void initialize() {
-        savedPlayerPanel = new SavedPlayerPanel(game);
-        add(savedPlayerPanel);
         mainMenuPanel = new MainMenuPanel(game);
         add(mainMenuPanel, BorderLayout.NORTH);
         JButton levelOneButton = new JButton("Level 1");
@@ -60,15 +55,15 @@ public class DontGetHit extends JFrame {
 //        levelOneButton.addActionListener(this);
         levelOneButton.setActionCommand("one");
         levelOneButton.setPreferredSize(new Dimension(100, 100));
-        add(levelOneButton, BorderLayout.LINE_START);
+//        add(levelOneButton, BorderLayout.LINE_START);
 
         JButton levelTwoButton = new JButton("Level 2");
         levelTwoButton.setLayout(null);
         levelTwoButton.setLocation(Game.WIDTH / 2, Game.HEIGHT / 2);
 //        levelOneButton.addActionListener(this);
         levelTwoButton.setActionCommand("two");
-        levelTwoButton.setPreferredSize(new Dimension(400, 50));
-        add(levelTwoButton, BorderLayout.PAGE_END);
+        levelTwoButton.setPreferredSize(new Dimension(100, 100));
+//        add(levelTwoButton, BorderLayout.LINE_START);
 
         JButton levelThreeButton = new JButton("Level 3");
         levelThreeButton.setLayout(null);
@@ -76,7 +71,13 @@ public class DontGetHit extends JFrame {
 //        levelOneButton.addActionListener(this);
         levelThreeButton.setActionCommand("three");
         levelThreeButton.setPreferredSize(new Dimension(100, 100));
-        add(levelThreeButton, BorderLayout.LINE_END);
+//        add(levelThreeButton, BorderLayout.LINE_START);
+
+        JPanel panel = new JPanel();
+        panel.add(levelOneButton);
+        panel.add(levelTwoButton);
+        panel.add(levelThreeButton);
+        add(panel);
     }
 
     // Set up timer

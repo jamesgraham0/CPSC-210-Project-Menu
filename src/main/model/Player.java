@@ -122,6 +122,14 @@ public class Player implements Json {
         return namesOfLockedLevels;
     }
 
+    public void resetPlayer() {
+        name = "";
+        color = "";
+        availableLevels = null;
+        lockedLevels = null;
+        setupLevels();
+    }
+
     /**
      * Next 3 methods are based largely off the example given in class
      */

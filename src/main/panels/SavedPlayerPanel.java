@@ -1,12 +1,9 @@
 package panels;
 
 
-import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.*;
 import java.util.ArrayList;
-import javax.swing.Box;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 
 import model.Game;
@@ -21,40 +18,49 @@ import model.Player;
 public class SavedPlayerPanel extends JPanel {
     private String nameText = "Name: ";
     private String colorText = "Color: ";
+    private JTextField nameTextBox;
+    private JTextField colorTextBox;
+
     private String availableLevelsText = "Available Levels: ";
     private String lockedLevelsText = "Locked Levels: ";
-    private static final int LBL_WIDTH = 50;
-    private static final int LBL_HEIGHT = 200;
+    private String currentPlayerText = "Current Player: ";
+    private static final int LBL_WIDTH = 200;
+    private static final int LBL_HEIGHT = 50;
     private Game game;
     private JLabel nameLabel;
     private JLabel colorLabel;
     private JLabel availableLevelsLabel;
     private JLabel lockedLevelsLabel;
+    private JLabel currentPlayerLabel;
     private Player player;
 
     // Constructs a score panel
     // effects: sets the background colour and draws the initial labels;
     //          updates this with the game whose score is to be displayed
     public SavedPlayerPanel(Game g) {
-        game = g;
-        setBackground(new Color(217, 217, 140));
-        nameLabel = new JLabel(nameText + Player.getPlayerName());
+        this.game = g;
+        setBackground(new Color(109, 192, 236, 255));
+
+        currentPlayerLabel = new JLabel("Current Player: ");
+        currentPlayerLabel.setPreferredSize(new Dimension(LBL_WIDTH, LBL_HEIGHT));
+        currentPlayerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        nameTextBox = new JTextField(5);
+        nameLabel = new JLabel(nameText);
         nameLabel.setPreferredSize(new Dimension(LBL_WIDTH, LBL_HEIGHT));
+        nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        colorLabel = new JLabel(colorText + Player.getColor());
+        colorTextBox = new JTextField(5);
+        colorLabel = new JLabel(colorText);
         colorLabel.setPreferredSize(new Dimension(LBL_WIDTH, LBL_HEIGHT));
+        colorLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-//        availableLevelsLabel = new JLabel(availableLevelsText + player.getAvailableLevels());
-//        availableLevelsLabel.setPreferredSize(new Dimension(LBL_WIDTH, LBL_HEIGHT));
-
-//        lockedLevelsLabel = new JLabel(lockedLevelsText + player.getLockedLevels());
-//        lockedLevelsLabel.setPreferredSize(new Dimension(LBL_WIDTH, LBL_HEIGHT));
+        add(currentPlayerLabel);
         add(nameLabel);
+        add(nameTextBox);
         add(colorLabel);
-//        add(availableLevelsLabel);
-//        add(lockedLevelsLabel);
-        add(Box.createHorizontalStrut(10));
-//        add(deaths);
+        add(colorTextBox);
+
     }
 
     // Updates the score panel
@@ -69,18 +75,24 @@ public class SavedPlayerPanel extends JPanel {
         repaint();
     }
 
-    public void setNameText(String s) {
-        nameText = "Name: " + s;
+    public String getNameTextBox() {
+        return nameTextBox.toString();
+    }
+
+    public String getColorTextBox() {
+        return colorTextBox.toString();
+    }
+
+    public void setNameTextBox(String s) {
+        nameTextBox.setText(s);
+    }
+
+    public void setColorTextBox(String s) {
+        colorTextBox.setText(s);
     }
 
     public void setColorText(String color) {
         colorText = "Color: " + color;
     }
 
-    public void setAvailableLevels(ArrayList<Level> availableLevels) {
-        availableLevelsText = "Available Levels: " + availableLevels;
-    }
-
-    public void setLockedLevels(ArrayList<Level> lockedLevels) {
-    }
 }

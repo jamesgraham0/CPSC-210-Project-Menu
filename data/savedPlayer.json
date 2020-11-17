@@ -1,9 +1,11 @@
 {
-    "available levels": [
-        {
-            "difficulty": "1",
-            "name": "easy"
-        },
+    "available levels": [{
+        "difficulty": "1",
+        "name": "easy"
+    }],
+    "color": "blue",
+    "name": "james",
+    "locked levels": [
         {
             "difficulty": "2",
             "name": "medium"
@@ -12,8 +14,5 @@
             "difficulty": "3",
             "name": "hard"
         }
-    ],
-    "color": "blue",
-    "name": "james",
-    "locked levels": []
+    ]
 }
