@@ -21,9 +21,9 @@ public class SavedPlayerPanel extends JPanel {
     private JTextField nameTextBox;
     private JTextField colorTextBox;
 
-    private String availableLevelsText = "Available Levels: ";
-    private String lockedLevelsText = "Locked Levels: ";
-    private String currentPlayerText = "Current Player: ";
+//    private String availableLevelsText = "Available Levels: ";
+//    private String lockedLevelsText = "Locked Levels: ";
+//    private String currentPlayerText = "Current Player: ";
     private static final int LBL_WIDTH = 200;
     private static final int LBL_HEIGHT = 50;
     private Game game;
@@ -76,11 +76,11 @@ public class SavedPlayerPanel extends JPanel {
     }
 
     public String getNameTextBox() {
-        return nameTextBox.toString();
+        return nameTextBox.getText();
     }
 
     public String getColorTextBox() {
-        return colorTextBox.toString();
+        return colorTextBox.getText();
     }
 
     public void setNameTextBox(String s) {
@@ -89,10 +89,6 @@ public class SavedPlayerPanel extends JPanel {
 
     public void setColorTextBox(String s) {
         colorTextBox.setText(s);
-    }
-
-    public void setColorText(String color) {
-        colorText = "Color: " + color;
     }
 
 }
