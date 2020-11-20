@@ -1,10 +1,9 @@
-package panels;
+package ui.panels;
 
-import constants.Constants;
-import model.Game;
+import ui.constants.Constants;
+import ui.model.Game;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -49,9 +48,9 @@ public class GamePanel extends JPanel {
 
 
 
-//package panels;
+//package ui.panels;
 //
-//import model.*;
+//import ui.model.*;
 //
 //import java.awt.*;
 //import java.awt.event.ActionEvent;

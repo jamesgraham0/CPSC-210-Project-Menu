@@ -1,6 +1,6 @@
-package image;
+package ui.image;
 
-import constants.Constants;
+import ui.constants.Constants;
 
 import javax.swing.*;
 

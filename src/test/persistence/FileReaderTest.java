@@ -1,7 +1,7 @@
 package persistence;
 
-import model.Level;
-import model.Player;
+import ui.model.Level;
+import ui.model.Player;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

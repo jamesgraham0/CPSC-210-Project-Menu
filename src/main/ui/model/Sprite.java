@@ -1,4 +1,4 @@
-package model;
+package ui.model;
 
 import java.awt.*;
 

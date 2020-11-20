@@ -1,4 +1,4 @@
-package constants;
+package ui.constants;
 
 
 // General Constants used in the game

@@ -1,4 +1,4 @@
-package model;
+package ui.model;
 
 // Creates a level with its name and difficulty
 public class Level {

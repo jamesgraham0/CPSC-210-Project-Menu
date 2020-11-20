@@ -1,4 +1,4 @@
-package panels;
+package ui.panels;
 
 
 import java.awt.Color;
@@ -8,9 +8,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 
-import model.Game;
-import model.Level;
-import model.Player;
+import ui.model.Game;
+import ui.model.Level;
+import ui.model.Player;
 
 
 // Represents the Levels Button Panel where all levels are displayed

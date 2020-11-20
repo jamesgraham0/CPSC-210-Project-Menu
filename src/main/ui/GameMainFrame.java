@@ -1,8 +1,8 @@
 //package ui;
 //
-//import constants.Constants;
-//import model.Game;
-//import panels.BottomPanel;
+//import ui.constants.Constants;
+//import ui.model.Game;
+//import ui.panels.BottomPanel;
 //
 //import javax.swing.*;
 //

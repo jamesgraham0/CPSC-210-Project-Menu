@@ -1,6 +1,6 @@
-package model;
+package ui.model;
 
-import constants.Constants;
+import ui.constants.Constants;
 
 import java.awt.*;
 

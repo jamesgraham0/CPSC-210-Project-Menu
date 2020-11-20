@@ -1,12 +1,9 @@
-package model;
+package ui.model;
 
-import image.Image;
-import image.ImageFactory;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Json;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 // Creates a player with a unique Name and Color

@@ -1,4 +1,4 @@
-package panels;
+package ui.panels;
 
 
 import java.awt.*;
@@ -12,8 +12,8 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 
-import constants.Constants;
-import model.*;
+import ui.constants.Constants;
+import ui.model.*;
 import persistence.FileReader;
 import persistence.FileWriter;
 
@@ -43,7 +43,7 @@ public class MainMenuPanel extends JPanel implements ActionListener {
     private ArrayList<Level> lockedLevels = new ArrayList<>();
 
     // Constructs a main menu panel
-    // effects:  sets size, adds space image as background, initializes the panels and player for the game
+    // effects:  sets size, adds space ui.image as background, initializes the ui.panels and player for the game
     public MainMenuPanel(Game g) {
 
         this.fileWriter = new FileWriter(JSON_STORE);
@@ -57,7 +57,7 @@ public class MainMenuPanel extends JPanel implements ActionListener {
     }
 
     // modifies: this
-    // effects: sets up all of the panels that belong in the main menu
+    // effects: sets up all of the ui.panels that belong in the main menu
     private void setupPanels(Game g) {
         savedPlayerPanel = new SavedPlayerPanel(g);
         add(savedPlayerPanel, BorderLayout.CENTER);
@@ -96,9 +96,9 @@ public class MainMenuPanel extends JPanel implements ActionListener {
     }
 
     // modifies: this
-    // effects: clears the main menu of all panels/buttons, sets the game panels/buttons to visible
+    // effects: clears the main menu of all ui.panels/buttons, sets the game ui.panels/buttons to visible
     public void clearPanelsAndButtons() {
-        // Clear panels
+        // Clear ui.panels
         savedPlayerPanel.setVisible(false);
         howToPlayPanel.setVisible(false);
         levelsButtonPanel.setVisible(false);
@@ -115,9 +115,9 @@ public class MainMenuPanel extends JPanel implements ActionListener {
     }
 
     // modifies: this
-    // effects: sets all the main menu panels/buttons to visible, sets the game panels/buttons to false
+    // effects: sets all the main menu ui.panels/buttons to visible, sets the game ui.panels/buttons to false
     public void regeneratePanelsAndButtons() {
-        // Clear panels
+        // Clear ui.panels
         savedPlayerPanel.setVisible(true);
         levelsButtonPanel.setVisible(true);
 
@@ -133,7 +133,7 @@ public class MainMenuPanel extends JPanel implements ActionListener {
     }
 
     // modifies: this
-    // effects: paints the background image to this
+    // effects: paints the background ui.image to this
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -269,7 +269,7 @@ public class MainMenuPanel extends JPanel implements ActionListener {
     }
 
     // modifies: this
-    // effects: draws the background image to this
+    // effects: draws the background ui.image to this
     public void drawGamePanel() {
         try {
             image = ImageIO.read(new File(Constants.BACKGROUND_IMAGE_URL));

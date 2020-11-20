@@ -1,4 +1,4 @@
-package panels;
+package ui.panels;
 
 
 import java.awt.Color;
@@ -8,8 +8,8 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 
-import model.Game;
-import model.Player;
+import ui.model.Game;
+import ui.model.Player;
 
 
 /*

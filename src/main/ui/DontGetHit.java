@@ -1,12 +1,10 @@
 package ui;
 
-import model.Game;
+import ui.model.Game;
 
-import panels.GamePanel;
-//import panels.BottomPanel;
-import panels.MainMenuPanel;
-import panels.SavedPlayerPanel;
-import java.awt.BorderLayout;
+import ui.panels.GamePanel;
+//import ui.panels.BottomPanel;
+import ui.panels.MainMenuPanel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

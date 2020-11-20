@@ -1,6 +1,6 @@
 package persistence;
 
-import model.Player;
+import ui.model.Player;
 import org.json.JSONObject;
 
 import java.io.*;

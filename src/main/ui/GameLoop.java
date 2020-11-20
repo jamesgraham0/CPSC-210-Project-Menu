@@ -1,6 +1,6 @@
 //package ui;
 //
-//import panels.GamePanel;
+//import ui.panels.GamePanel;
 //
 //import java.awt.event.ActionEvent;
 //import java.awt.event.ActionListener;

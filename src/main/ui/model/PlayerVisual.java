@@ -1,8 +1,6 @@
-package model;
+package ui.model;
 
-import constants.Constants;
-import image.Image;
-import image.ImageFactory;
+import ui.constants.Constants;
 
 import javax.swing.*;
 import java.awt.*;
