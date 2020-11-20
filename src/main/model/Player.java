@@ -11,11 +11,15 @@ import java.util.ArrayList;
 
 // Creates a player with a unique Name and Color
 public class Player implements Json {
-    private static String name;
+    private String name;
     public ArrayList<Level> availableLevels;
     public ArrayList<Level> lockedLevels;
-    private static String color;
+    private String color;
     public Level currentLevel;
+
+    public Level level1;
+    public Level level2;
+    public Level level3;
 
     // constructs a new Player with a name, color, available and locked levels.
     // REQUIRES: n is a non-empty name (String), and
@@ -26,6 +30,9 @@ public class Player implements Json {
         this.color = c;
         this.availableLevels = availableLevels;
         this.lockedLevels = lockedLevels;
+        level1 = new Level("easy", "1");
+        level2 = new Level("medium", "2");
+        level3 = new Level("hard", "3");
         setupLevels();
     }
 
@@ -34,10 +41,6 @@ public class Player implements Json {
     //          that are locked
     public void setupLevels() {
 
-        Level level1 = new Level("easy", "1");
-        Level level2 = new Level("medium", "2");
-        Level level3 = new Level("hard", "3");
-
         this.availableLevels.add(level1);
         this.lockedLevels.add(level2);
         this.lockedLevels.add(level3);
@@ -45,11 +48,31 @@ public class Player implements Json {
         this.currentLevel = availableLevels.get(availableLevels.size() - 1);
     }
 
-    public static String getPlayerName() {
+    public void setAvailableLevels(ArrayList<Level> availableLevels) {
+        this.availableLevels = availableLevels;
+    }
+
+    public void setLockedLevels(ArrayList<Level> lockedLevels) {
+        this.lockedLevels = lockedLevels;
+    }
+
+    public Level getLevel1() {
+        return level1;
+    }
+
+    public Level getLevel2() {
+        return level2;
+    }
+
+    public Level getLevel3() {
+        return level3;
+    }
+
+    public String getPlayerName() {
         return name;
     }
 
-    public static String getColor() {
+    public String getColor() {
         return color;
     }
 

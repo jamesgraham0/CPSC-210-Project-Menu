@@ -3,7 +3,7 @@ package ui;
 import model.Game;
 
 import panels.GamePanel;
-import panels.BottomPanel;
+//import panels.BottomPanel;
 import panels.MainMenuPanel;
 import panels.SavedPlayerPanel;
 import java.awt.BorderLayout;
@@ -26,9 +26,7 @@ public class DontGetHit extends JFrame {
     private static final int INTERVAL = 20;
     private Game game;
     private MainMenuPanel mainMenuPanel;
-    private BottomPanel bottomPanel;
     private GamePanel gamePanel;
-    private SavedPlayerPanel savedPlayerPanel;
 
 
     // Constructs main window
@@ -48,37 +46,11 @@ public class DontGetHit extends JFrame {
 
     private void initialize() {
         mainMenuPanel = new MainMenuPanel(game);
-        add(mainMenuPanel, BorderLayout.NORTH);
-        JButton levelOneButton = new JButton("Level 1");
-        levelOneButton.setLayout(null);
-        levelOneButton.setLocation(Game.WIDTH / 2, Game.HEIGHT / 2);
-//        levelOneButton.addActionListener(this);
-        levelOneButton.setActionCommand("one");
-        levelOneButton.setPreferredSize(new Dimension(100, 100));
-//        add(levelOneButton, BorderLayout.LINE_START);
-
-        JButton levelTwoButton = new JButton("Level 2");
-        levelTwoButton.setLayout(null);
-        levelTwoButton.setLocation(Game.WIDTH / 2, Game.HEIGHT / 2);
-//        levelOneButton.addActionListener(this);
-        levelTwoButton.setActionCommand("two");
-        levelTwoButton.setPreferredSize(new Dimension(100, 100));
-//        add(levelTwoButton, BorderLayout.LINE_START);
-
-        JButton levelThreeButton = new JButton("Level 3");
-        levelThreeButton.setLayout(null);
-        levelThreeButton.setLocation(Game.WIDTH / 2, Game.HEIGHT / 2);
-//        levelOneButton.addActionListener(this);
-        levelThreeButton.setActionCommand("three");
-        levelThreeButton.setPreferredSize(new Dimension(100, 100));
-//        add(levelThreeButton, BorderLayout.LINE_START);
-
-        JPanel panel = new JPanel();
-        panel.add(levelOneButton);
-        panel.add(levelTwoButton);
-        panel.add(levelThreeButton);
-        add(panel);
+//        gamePanel = new GamePanel(game);
+        add(mainMenuPanel);
+//        add(gamePanel);
     }
+
 
     // Set up timer
     // modifies: none
@@ -89,7 +61,6 @@ public class DontGetHit extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 game.update();
-//                bottomPanel.repaint();
             }
         });
 

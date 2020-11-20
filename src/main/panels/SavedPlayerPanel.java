@@ -60,19 +60,6 @@ public class SavedPlayerPanel extends JPanel {
         add(nameTextBox);
         add(colorLabel);
         add(colorTextBox);
-
-    }
-
-    // Updates the score panel
-    // modifies: this
-    // effects:  updates number of invaders shot and number of missiles
-    //           remaining to reflect current state of game
-    public void update() {
-//        nameLabel.setText(nameText + Player.getPlayerName());
-//        colorLabel.setText(colorText + Player.getColor());
-//        availableLevelsLabel.setText(availableLevelsText + Player.getAvailableLevels());
-//        lockedLevelsLabel.setText(lockedLevelsText + Player.getLockedLevels());
-        repaint();
     }
 
     public String getNameTextBox() {
