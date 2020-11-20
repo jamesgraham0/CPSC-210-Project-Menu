@@ -11,47 +11,35 @@ import model.Level;
 import model.Player;
 
 
-/*
- * Represents the panel in which the scoreboard is displayed.
- */
-@SuppressWarnings("serial")
+// Represents a SavedPlayerPanel
 public class SavedPlayerPanel extends JPanel {
-    private String nameText = "Name: ";
-    private String colorText = "Color: ";
-    private JTextField nameTextBox;
-    private JTextField colorTextBox;
+    private final JTextField nameTextBox;
+    private final JTextField colorTextBox;
 
-//    private String availableLevelsText = "Available Levels: ";
-//    private String lockedLevelsText = "Locked Levels: ";
-//    private String currentPlayerText = "Current Player: ";
     private static final int LBL_WIDTH = 200;
     private static final int LBL_HEIGHT = 50;
-    private Game game;
-    private JLabel nameLabel;
-    private JLabel colorLabel;
     private JLabel availableLevelsLabel;
     private JLabel lockedLevelsLabel;
-    private JLabel currentPlayerLabel;
     private Player player;
 
-    // Constructs a score panel
-    // effects: sets the background colour and draws the initial labels;
-    //          updates this with the game whose score is to be displayed
+    // Constructs a SavedPlayerPanel
+    // effects: sets the background colour, draws the labels, and sets the textfields
     public SavedPlayerPanel(Game g) {
-        this.game = g;
         setBackground(new Color(109, 192, 236, 255));
 
-        currentPlayerLabel = new JLabel("Current Player: ");
+        JLabel currentPlayerLabel = new JLabel("Current Player: ");
         currentPlayerLabel.setPreferredSize(new Dimension(LBL_WIDTH, LBL_HEIGHT));
         currentPlayerLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         nameTextBox = new JTextField(5);
-        nameLabel = new JLabel(nameText);
+        String nameText = "Name: ";
+        JLabel nameLabel = new JLabel(nameText);
         nameLabel.setPreferredSize(new Dimension(LBL_WIDTH, LBL_HEIGHT));
         nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         colorTextBox = new JTextField(5);
-        colorLabel = new JLabel(colorText);
+        String colorText = "Color: ";
+        JLabel colorLabel = new JLabel(colorText);
         colorLabel.setPreferredSize(new Dimension(LBL_WIDTH, LBL_HEIGHT));
         colorLabel.setHorizontalAlignment(SwingConstants.CENTER);
 

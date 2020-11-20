@@ -5,7 +5,7 @@ import constants.Constants;
 import java.awt.*;
 
 /*
- * Represents a an enemy
+ * Represents an enemy
  */
 public class Enemies {
 
@@ -18,8 +18,8 @@ public class Enemies {
     private int xcoord;
     private int ycoord;
 
-    // Constructs an invader
-    // effects: invader is positioned at coordinates (x, y)
+    // Constructs an Enemy
+    // effects: Enemy is positioned at coordinates (x, y)
     public Enemies(int x, int y) {
         this.xcoord = x;
         this.ycoord = y;
@@ -44,9 +44,9 @@ public class Enemies {
         handleBoundary();
     }
 
-    // Determines if this invader has collided with a missile
+    // Determines if this player and enemy have collided
     // modifies: none
-    // effects:  returns true if this invader has collided with missile m,
+    // effects:  returns true if this enemy has collided with PlayerVisual p,
     //           false otherwise
     public boolean collidedWith(PlayerVisual p) {
         Rectangle enemyHitBox = new Rectangle(getXcoord() - SIZE_X / 2, getYcoord() - SIZE_Y / 2, SIZE_X,
@@ -56,9 +56,9 @@ public class Enemies {
         return enemyHitBox.intersects(playerHitBox);
     }
 
-    // Constrains invader so that it doesn't travel off sides of screen
+    // Sets horizontal boundaries for enemy
     // modifies: this
-    // effects: tank is constrained to remain within horizontal boundaries of game
+    // effects: enemy is constrained to remain within horizontal boundaries of game
     private void handleBoundary() {
         if (xcoord < 0) {
             xcoord = 0;

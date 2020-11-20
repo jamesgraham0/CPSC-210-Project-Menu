@@ -35,6 +35,7 @@ public class DontGetHit extends JFrame {
         super("Don't Get Hit");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         game = new Game();
+        setResizable(false);
 
         initialize();
         addKeyListener(new KeyHandler());
@@ -46,7 +47,7 @@ public class DontGetHit extends JFrame {
 
     private void initialize() {
         mainMenuPanel = new MainMenuPanel(game);
-//        gamePanel = new GamePanel(game);
+//        gamePanel = new GamePanel();
         add(mainMenuPanel);
 //        add(gamePanel);
     }

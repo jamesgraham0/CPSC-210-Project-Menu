@@ -13,18 +13,16 @@ import model.Player;
 
 
 /*
- * Represents the panel in which the scoreboard is displayed.
+ * Represents the panel in which the current player's name and number of deaths
+ * are displayed while playing the game
  */
-@SuppressWarnings("serial")
 public class BottomPanel extends JPanel implements ActionListener {
     private String nameText = "Name: ";
     private String deathsText = "Deaths: ";
     private static final int LBL_WIDTH = 200;
     private static final int LBL_HEIGHT = 50;
-    private Game game;
-    private JLabel nameLabel;
+    private final JLabel nameLabel;
     private JLabel deathsLabel;
-    private JButton backButton;
     private GamePanel gamePanel;
     private Player player;
 
@@ -32,7 +30,6 @@ public class BottomPanel extends JPanel implements ActionListener {
     // effects: sets the background colour and draws the initial labels;
     //          updates this with the game whose score is to be displayed
     public BottomPanel(Game g) {
-        game = g;
         setBackground(new Color(236, 217, 217));
         setOpaque(true);
 
@@ -45,8 +42,7 @@ public class BottomPanel extends JPanel implements ActionListener {
 
     // Updates the score panel
     // modifies: this
-    // effects:  updates number of invaders shot and number of missiles
-    //           remaining to reflect current state of game
+    // effects:  updates the score panel with players' name and number of times they've died
     public void update() {
         nameLabel.setText(nameText + player.getPlayerName());
         deathsLabel.setText(deathsText + Game.getDeathCount());
@@ -61,8 +57,10 @@ public class BottomPanel extends JPanel implements ActionListener {
         deathsText = "Deaths: " + s;
     }
 
+    // modifies: this
+    // effects: adds the back button to the score panel
     public void addBackButton() {
-        backButton = new JButton("Back");
+        JButton backButton = new JButton("Back");
         backButton.addActionListener(this);
         backButton.setActionCommand("back");
 

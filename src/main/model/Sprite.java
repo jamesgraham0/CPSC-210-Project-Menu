@@ -2,6 +2,7 @@ package model;
 
 import java.awt.*;
 
+// abstract class of sprites, might use in phase 4
 public abstract class Sprite {
 
     private java.awt.Image image;

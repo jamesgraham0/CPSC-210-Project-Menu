@@ -4,6 +4,7 @@ import constants.Constants;
 
 import javax.swing.*;
 
+// Creates the imageIcon of the loaded images for the game
 public class ImageFactory {
 
     public static ImageIcon createImage(Image image) {

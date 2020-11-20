@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 /*
- * Represents a space invaders game.
+ * Represents a game of Dont Get Hit
  */
 public class Game {
     public static final int WIDTH = 800;
@@ -20,8 +20,8 @@ public class Game {
     private PlayerVisual player;
     private boolean isGameOver;
 
-    // Constructs a Space Invaders Game
-    // effects:  creates empty lists of missiles and invaders, centres tank on screen
+    // Constructs a Dont Get Hit Game
+    // effects:  creates empty lists of enemies, sets player on screen
     public Game() {
         enemies = new ArrayList<Enemies>();
         setUp();
@@ -29,20 +29,19 @@ public class Game {
 
     // Updates the game on clock tick
     // modifies: this
-    // effects:  updates tank, missiles and invaders
+    // effects:  updates player and enemies
     public void update() {
         moveEnemies();
         player.move();
 
-        invade();
+        enemiesAttack();
         checkCollisions();
         checkGameOver();
     }
 
     // Responds to key press codes
     // modifies: this
-    // effects:  turns tank, fires missiles and resets game in response to
-    //           given key pressed code
+    // effects:  moves player, resets game if hit
     public void keyPressed(int keyCode) {
         if (keyCode == KeyEvent.VK_R && isGameOver) {
             setUp();
@@ -53,7 +52,7 @@ public class Game {
         }
     }
 
-    // Exercise: fill in the documentation for this method
+    // checks to see if the game is over
     public boolean isOver() {
         return isGameOver;
     }
@@ -66,68 +65,63 @@ public class Game {
         return enemies;
     }
 
-    public PlayerVisual getPlayer() {
-        return player;
-    }
-
     public static int getDeathCount() {
         return deathCount;
     }
 
     // Sets / resets the game
     // modifies: this
-    // effects:  clears list of missiles and invaders, initializes tank
+    // effects:  clears enemies, initializes player
     private void setUp() {
         enemies.clear();
         player = new PlayerVisual(WIDTH / 2, HEIGHT / 2);
         isGameOver = false;
     }
 
-    // Controls the tank
+    // Controls the player
     // modifies: this
-    // effects: turns tank in response to key code
+    // effects: moves player in response to keyCode
     private void playerControl() {
         player.move();
     }
 
-    // updates the invaders
+    // updates the enemies
     // modifies: this
-    // effects: moves the invaders
+    // effects: moves the enemies
     private void moveEnemies() {
         for (Enemies next : enemies) {
             next.move();
         }
     }
 
-    // Exercise: add the documentation for this method
-    private void invade() {
+    // modifies: this
+    // effects: Enemies start attack
+    private void enemiesAttack() {
         if (RND.nextInt(INVASION_PERIOD) < 1) {
             Enemies e = new Enemies(RND.nextInt(Game.WIDTH), 0);
             enemies.add(e);
         }
     }
 
-    // Checks for collisions between an invader and a missile
+    // Checks for collisions between enemies and the player
     // modifies: this
-    // effects:  removes any invader that has been shot with a missile
-    //           and removes corresponding missile from play
-    private void checkCollisions() {
+    // effects: returns true if player collides with enemy, otherwise false
+    private boolean checkCollisions() {
         List<Enemies> invadersToRemove = new ArrayList<Enemies>();
 
         for (Enemies target : enemies) {
             if (checkEnemyHit(target, player)) {
-                invadersToRemove.add(target);
+                return true;
             }
         }
-
-//        player.removeAll();
+        return false;
     }
 
-    // Exercise:  fill in the documentation for this method
+    // modifies: this
+    // effects: checks to see if an enemy and player collide, increases death count++
     private boolean checkEnemyHit(Enemies target, PlayerVisual player) {
         for (Enemies next : enemies) {
             if (next.collidedWith(player)) {
-//                player.removeAll();
                 deathCount++;
                 return true;
             }
@@ -136,18 +130,13 @@ public class Game {
     }
 
 
-    // Is game over? (Has an invader managed to land?)
+    // Is game over? (Have enemy and player collided)
     // modifies: this
-    // effects:  if an invader has landed, game is marked as
-    //           over and lists of invaders & missiles cleared
+    // effects:  if player and enemy collide, sets isGameOver = true
     private void checkGameOver() {
 
-        if (player.getY() < 50) {
+        if (checkCollisions()) {
             isGameOver = true;
-        }
-
-        if (isGameOver) {
-            enemies.clear();
         }
     }
 }

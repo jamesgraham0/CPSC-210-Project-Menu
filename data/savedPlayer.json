@@ -1,10 +1,20 @@
 {
-    "available levels": [{
-        "difficulty": "1",
-        "name": "easy"
-    }],
-    "color": "",
-    "name": "",
+    "available levels": [
+        {
+            "difficulty": "1",
+            "name": "easy"
+        },
+        {
+            "difficulty": "2",
+            "name": "medium"
+        },
+        {
+            "difficulty": "3",
+            "name": "hard"
+        }
+    ],
+    "color": "purple",
+    "name": "emily",
     "locked levels": [
         {
             "difficulty": "2",

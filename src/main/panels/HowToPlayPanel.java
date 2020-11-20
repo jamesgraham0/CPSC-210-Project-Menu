@@ -1,35 +1,20 @@
 package panels;
 
-
 import java.awt.*;
-import java.util.ArrayList;
 import javax.swing.*;
-
-
 import model.Game;
-import model.Level;
-import model.Player;
 
-
-/*
- * Represents the panel in which the scoreboard is displayed.
- */
-@SuppressWarnings("serial")
+// Represents a panel that explains the instructions of how to play
 public class HowToPlayPanel extends JPanel {
 
     private static final int LBL_WIDTH = 700;
     private static final int LBL_HEIGHT = 100;
-    private Game game;
-    private JLabel howToPlayLabel;
 
-    // Constructs a score panel
-    // effects: sets the background colour and draws the initial labels;
-    //          updates this with the game whose score is to be displayed
+    // Constructs a HowToPlayPanel
     public HowToPlayPanel(Game g) {
-        this.game = g;
-        setBackground(Color.darkGray);
+        setBackground(Color.black);
 
-        howToPlayLabel = new JLabel("Use the up, down, left, and right keys to avoid "
+        JLabel howToPlayLabel = new JLabel("Use the up, down, left, and right keys to avoid "
                 + "oncoming enemies and reach the other side of the screen!");
         howToPlayLabel.setForeground(Color.white);
         howToPlayLabel.setPreferredSize(new Dimension(LBL_WIDTH, LBL_HEIGHT));

@@ -1,9 +1,10 @@
 package constants;
 
+
+// General Constants used in the game
 public class Constants {
 
     private Constants() {
-
     }
 
     public static final String TITLE = "Don't Get Hit";
