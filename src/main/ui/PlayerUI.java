@@ -1,7 +1,7 @@
 package ui;
 
-import ui.model.Level;
-import ui.model.Player;
+import model.Level;
+import model.Player;
 import persistence.FileReader;
 import persistence.FileWriter;
 

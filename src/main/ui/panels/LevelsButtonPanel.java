@@ -8,9 +8,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 
-import ui.model.Game;
-import ui.model.Level;
-import ui.model.Player;
+import ui.Game;
+import model.Level;
+import model.Player;
 
 
 // Represents the Levels Button Panel where all levels are displayed

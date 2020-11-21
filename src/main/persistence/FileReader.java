@@ -1,7 +1,7 @@
 package persistence;
 
-import ui.model.Level;
-import ui.model.Player;
+import model.Level;
+import model.Player;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

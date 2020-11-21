@@ -1,7 +1,7 @@
 package ui.panels;
 
 import ui.constants.Constants;
-import ui.model.Game;
+import ui.Game;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -50,7 +50,7 @@ public class GamePanel extends JPanel {
 
 //package ui.panels;
 //
-//import ui.model.*;
+//import model.*;
 //
 //import java.awt.*;
 //import java.awt.event.ActionEvent;

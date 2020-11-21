@@ -1,7 +1,5 @@
 package ui;
 
-import ui.model.Game;
-
 import ui.panels.GamePanel;
 //import ui.panels.BottomPanel;
 import ui.panels.MainMenuPanel;

@@ -1,4 +1,4 @@
-package ui.model;
+package model;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -51,18 +51,6 @@ public class Player implements Json {
 
     public void setLockedLevels(ArrayList<Level> lockedLevels) {
         this.lockedLevels = lockedLevels;
-    }
-
-    public Level getLevel1() {
-        return level1;
-    }
-
-    public Level getLevel2() {
-        return level2;
-    }
-
-    public Level getLevel3() {
-        return level3;
     }
 
     public String getPlayerName() {

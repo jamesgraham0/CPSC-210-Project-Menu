@@ -12,8 +12,9 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 
+import ui.Game;
 import ui.constants.Constants;
-import ui.model.*;
+import model.*;
 import persistence.FileReader;
 import persistence.FileWriter;
 

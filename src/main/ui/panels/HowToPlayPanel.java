@@ -2,7 +2,7 @@ package ui.panels;
 
 import java.awt.*;
 import javax.swing.*;
-import ui.model.Game;
+import ui.Game;
 
 // Represents a panel that explains the instructions of how to play
 public class HowToPlayPanel extends JPanel {
