@@ -16,7 +16,7 @@ import model.Player;
  * Represents the panel in which the current player's name and number of deaths
  * are displayed while playing the game
  */
-public class BottomPanel extends JPanel implements ActionListener {
+public class ScorePanel extends JPanel implements ActionListener {
     private String nameText = "Name: ";
     private String deathsText = "Deaths: ";
     private static final int LBL_WIDTH = 200;
@@ -29,7 +29,7 @@ public class BottomPanel extends JPanel implements ActionListener {
     // Constructs a score panel
     // effects: sets the background colour and draws the initial labels;
     //          updates this with the game whose score is to be displayed
-    public BottomPanel(Game g) {
+    public ScorePanel(Game g) {
         setBackground(new Color(236, 217, 217));
         setOpaque(true);
 
@@ -45,7 +45,7 @@ public class BottomPanel extends JPanel implements ActionListener {
     // effects:  updates the score panel with players' name and number of times they've died
     public void update() {
         nameLabel.setText(nameText + player.getPlayerName());
-        deathsLabel.setText(deathsText + Game.getDeathCount());
+        deathsLabel.setText(deathsText + player.deathCount);
         repaint();
     }
 

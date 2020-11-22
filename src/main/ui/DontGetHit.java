@@ -3,6 +3,7 @@ package ui;
 import ui.panels.GamePanel;
 //import ui.panels.BottomPanel;
 import ui.panels.MainMenuPanel;
+import ui.panels.ScorePanel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -23,6 +24,9 @@ public class DontGetHit extends JFrame {
     private Game game;
     private MainMenuPanel mainMenuPanel;
     private GamePanel gamePanel;
+    private ScorePanel scorePanel;
+    private PlayerVisual playerVisual;
+
 
 
     // Constructs main window
@@ -31,6 +35,13 @@ public class DontGetHit extends JFrame {
         super("Don't Get Hit");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         game = new Game();
+
+        gamePanel = new GamePanel(game);
+        add(gamePanel);
+        gamePanel.setVisible(false);
+
+
+        addKeyListener(new KeyHandler());
         setResizable(false);
 
         initialize();
@@ -43,9 +54,7 @@ public class DontGetHit extends JFrame {
 
     private void initialize() {
         mainMenuPanel = new MainMenuPanel(game);
-//        gamePanel = new GamePanel();
         add(mainMenuPanel);
-//        add(gamePanel);
     }
 
 
@@ -56,7 +65,7 @@ public class DontGetHit extends JFrame {
     private void addTimer() {
         Timer t = new Timer(INTERVAL, new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent ae) {
+            public void actionPerformed(ActionEvent e) {
                 game.update();
             }
         });

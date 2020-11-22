@@ -1,116 +1,81 @@
 package ui;
 
-import ui.constants.Constants;
-
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
 public class PlayerVisual {
 
-    public static final int SIZE_X = Constants.PLAYER_WIDTH;
-    public static final int SIZE_Y = Constants.PLAYER_HEIGHT;
+//    public static final int SIZE_X = Constants.PLAYER_WIDTH;
+//    public static final int SIZE_Y = Constants.PLAYER_HEIGHT;
+//    public static final int Y_POS = Game.HEIGHT - 25;
+//    public static final Color RED = new Color(227, 49, 49);
+//    public static final Color BLUE = new Color(17, 138, 213);
+//
+
+    public static final int SIZE_X = 25;
+    public static final int SIZE_Y = 25;
+    public static final int DX = 4;
+    public static final int DY = 4;
     public static final int Y_POS = Game.HEIGHT - 40;
-    public static final Color COLOR = new Color(250, 20, 20);
+    public static final Color COLOR = new Color(250, 128, 20);
 
-    private int dx = 0;
-    private int dy = 0;
-    private int xcoord;
-    private int ycoord;
+    public int x;
+    public int y;
 
-    // Constructs a player
-    // effects: missile is positioned at coordinates (x, y)
+    // Construct a tank.
+    // effects: places tank at position (x, Y_POS) moving right.
     public PlayerVisual(int x, int y) {
-        this.xcoord = x;
-        this.ycoord = y;
+        this.x = x;
+        this.y = y;
     }
 
     public int getX() {
-        return xcoord;
+        return x;
     }
 
     public int getY() {
-        return ycoord;
+        return y;
     }
 
-    public void setXcoord(int x) {
-        this.xcoord = x;
-    }
-
-    public void setYcoord(int y) {
-        this.ycoord = y;
-    }
-
-    public void setImage(ImageIcon i) {
-    }
-
+    // Updates the tank on clock tick
+    // modifies: this
+    // effects:  tank is moved DX units in whatever direction it is facing and is
+    //           constrained to remain within vertical boundaries of game
     public void move() {
-        xcoord += dx;
-        ycoord += dy;
+        x += DX;
+        y = y + DY;
 
-        // BOUNDS
-
-        // LEFT
-        if (xcoord < 0) {
-            xcoord = 0;
-        }
-
-        // RIGHT
-        if (xcoord > Constants.GAME_WIDTH - Constants.PLAYER_WIDTH) {
-            xcoord = Constants.GAME_WIDTH - Constants.PLAYER_WIDTH;
-        }
-
-        // TOP
-        if (ycoord < 0) {
-            ycoord = 0;
-        }
-
-        // BOTTOM
-        if (ycoord > Constants.GAME_HEIGHT - Constants.PLAYER_WIDTH) {
-            ycoord = Constants.GAME_HEIGHT - Constants.PLAYER_WIDTH;
-        }
+        handleBoundary();
     }
 
-    public void keyPressed(KeyEvent e) {
-
-        int key = e.getKeyCode();
-
-        if (key == KeyEvent.VK_LEFT) {
-            dx = -2;
-        }
-
-        if (key == KeyEvent.VK_RIGHT) {
-            dx = 2;
-        }
-
-        if (key == KeyEvent.VK_UP) {
-            dy = -2;
-        }
-
-        if (key == KeyEvent.VK_DOWN) {
-            dy = 2;
-        }
+    // Constrains tank so that it doesn't travel of sides of screen
+    // modifies: this
+    // effects: tank is constrained to remain within vertical boundaries of game
+    private void handleBoundary() {
+        if (x < 0)
+            x = 0;
+        else if (x > Game.WIDTH)
+            x = Game.WIDTH;
     }
 
-    public void keyReleased(KeyEvent e) {
-
-        int key = e.getKeyCode();
-
-        if (key == KeyEvent.VK_LEFT) {
-            dx = 0;
-        }
-
-        if (key == KeyEvent.VK_RIGHT) {
-            dx = 0;
-        }
-
-        if (key == KeyEvent.VK_UP) {
-            dy = 0;
-        }
-
-        if (key == KeyEvent.VK_DOWN) {
-            dy = 0;
-        }
-    }
+//    public void keyReleased(KeyEvent e) {
+//
+//        int key = e.getKeyCode();
+//
+//        if (key == KeyEvent.VK_LEFT) {
+//            dx = 0;
+//        }
+//
+//        if (key == KeyEvent.VK_RIGHT) {
+//            dx = 0;
+//        }
+//
+//        if (key == KeyEvent.VK_UP) {
+//            dy = 0;
+//        }
+//
+//        if (key == KeyEvent.VK_DOWN) {
+//            dy = 0;
+//        }
+//    }
 
 }

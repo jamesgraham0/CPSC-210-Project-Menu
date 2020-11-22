@@ -51,8 +51,8 @@ public class Enemies {
     public boolean collidedWith(PlayerVisual p) {
         Rectangle enemyHitBox = new Rectangle(getXcoord() - SIZE_X / 2, getYcoord() - SIZE_Y / 2, SIZE_X,
                 SIZE_Y);
-        Rectangle playerHitBox = new Rectangle(p.getX() - PlayerVisual.SIZE_X / 2, p.getY()
-                - PlayerVisual.SIZE_Y / 2, PlayerVisual.SIZE_X, PlayerVisual.SIZE_Y);
+        Rectangle playerHitBox = new Rectangle(p.x - 12, p.y
+                - 12, 25, 25);
         return enemyHitBox.intersects(playerHitBox);
     }
 

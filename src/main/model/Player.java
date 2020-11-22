@@ -13,6 +13,7 @@ public class Player implements Json {
     public ArrayList<Level> lockedLevels;
     private String color;
     public Level currentLevel;
+    public int deathCount;
 
     public Level level1;
     public Level level2;
@@ -27,17 +28,32 @@ public class Player implements Json {
         this.color = c;
         this.availableLevels = availableLevels;
         this.lockedLevels = lockedLevels;
+        currentLevel = null;
+        deathCount = 0;
+
         level1 = new Level("easy", "1");
         level2 = new Level("medium", "2");
         level3 = new Level("hard", "3");
         setupLevels();
     }
 
+    public Level getCurrentLevel() {
+        return currentLevel;
+    }
+
+    // modifies: this, Level
+    // effects: sets the current level of the player
+    public void setLevel(Level level) {
+        if (currentLevel != level) {
+            currentLevel = level;
+            level.addPlayer(this);
+        }
+    }
+
     // MODIFIES: this
     // EFFECTS: the initial levels that a player can play, and those
     //          that are locked
     public void setupLevels() {
-
         this.availableLevels.add(level1);
         this.lockedLevels.add(level2);
         this.lockedLevels.add(level3);
@@ -71,10 +87,6 @@ public class Player implements Json {
 
     public String getLevelName() {
         return this.currentLevel.getLevelName();
-    }
-
-    public void setLevel(Level level) {
-        this.currentLevel = level;
     }
 
     public void setName(String name) {
@@ -128,14 +140,6 @@ public class Player implements Json {
             namesOfLockedLevels.add(level.getLevelName());
         }
         return namesOfLockedLevels;
-    }
-
-    public void resetPlayer() {
-        name = "";
-        color = "";
-        availableLevels = null;
-        lockedLevels = null;
-        setupLevels();
     }
 
     /**

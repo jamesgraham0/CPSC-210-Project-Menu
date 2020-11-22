@@ -51,6 +51,7 @@ public class LevelsButtonPanel extends JPanel implements ActionListener {
     public void unlockLevelTwoButton() {
         levelTwoButton.setForeground(Color.black);
         levelTwoButton.setOpaque(true);
+        levelTwoButton.setBackground(new Color(0xFADC52));
     }
 
     // modifies: this
@@ -65,6 +66,7 @@ public class LevelsButtonPanel extends JPanel implements ActionListener {
     public void unlockLevelThreeButton() {
         levelThreeButton.setForeground(Color.black);
         levelThreeButton.setOpaque(true);
+        levelThreeButton.setBackground(new Color(0xF31B3B));
     }
 
     // modifies: this
@@ -125,6 +127,7 @@ public class LevelsButtonPanel extends JPanel implements ActionListener {
     // modifies: this
     // effects: sets up level one button
     private void setupLevelOneButton() {
+        levelOneButton.setBackground(new Color(0x4AEF4A));
         levelOneButton.addActionListener(this);
         levelOneButton.setLayout(null);
         levelOneButton.setActionCommand("one");
@@ -153,6 +156,12 @@ public class LevelsButtonPanel extends JPanel implements ActionListener {
             levelTwoButton.setForeground(Color.black);
             player.doLevel(player.level1);
 
+            if (player.getNamesAvailableLevels().contains("medium")) {
+                levelTwoButton.setBackground(new Color(0xFADC52));
+            }
+
+            mainMenuPanel.getGamePanel().setVisible(true);
+
         } else if ("two".equals(e.getActionCommand()) && player.getAvailableLevels().contains(player.level2)
                 && levelTwoButton.isOpaque()) {
             mainMenuPanel.clearPanelsAndButtons();
@@ -160,6 +169,10 @@ public class LevelsButtonPanel extends JPanel implements ActionListener {
             levelThreeButton.setOpaque(true);
             levelThreeButton.setForeground(Color.black);
             player.doLevel(player.level2);
+
+            if (player.getNamesAvailableLevels().contains("hard")) {
+                levelThreeButton.setBackground(new Color(0xF31B3B));
+            }
 
         } else if ("three".equals(e.getActionCommand()) && player.getAvailableLevels().contains(player.level3)
                 && levelThreeButton.isOpaque()) {
