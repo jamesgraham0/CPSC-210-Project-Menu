@@ -41,6 +41,14 @@ public class Player implements Json {
         return currentLevel;
     }
 
+    // modifies: this, Level
+    // effects: sets the current level of the player
+    public void setLevel(Level level) {
+        if (currentLevel != level) {
+            currentLevel = level;
+        }
+    }
+
     // MODIFIES: this
     // EFFECTS: the initial levels that a player can play, and those
     //          that are locked

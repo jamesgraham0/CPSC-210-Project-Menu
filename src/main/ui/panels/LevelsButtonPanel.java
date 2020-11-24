@@ -19,7 +19,6 @@ public class LevelsButtonPanel extends JPanel implements ActionListener {
     private final JButton levelTwoButton;
     private final JButton levelThreeButton;
     private Player player;
-    public Level currentLevel;
     private final MainMenuPanel mainMenuPanel;
 
     // Constructs a LevelsButtonPanel

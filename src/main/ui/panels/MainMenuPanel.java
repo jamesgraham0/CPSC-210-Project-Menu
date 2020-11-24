@@ -39,9 +39,6 @@ public class MainMenuPanel extends JPanel implements ActionListener {
 
     private BufferedImage image;
 
-    private ArrayList<Level> availableLevels = new ArrayList<>();
-    private ArrayList<Level> lockedLevels = new ArrayList<>();
-
     // Constructs a main menu panel
     // effects:  sets size, adds space ui.image as background, initializes the ui.panels and player for the game
     public MainMenuPanel(Game g) {

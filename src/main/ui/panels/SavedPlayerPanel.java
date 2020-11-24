@@ -18,7 +18,6 @@ public class SavedPlayerPanel extends JPanel {
     private static final int LBL_HEIGHT = 50;
     private JLabel availableLevelsLabel;
     private JLabel lockedLevelsLabel;
-    private Player player;
 
     // Constructs a SavedPlayerPanel
     // effects: sets the background colour, draws the labels, and sets the textfields

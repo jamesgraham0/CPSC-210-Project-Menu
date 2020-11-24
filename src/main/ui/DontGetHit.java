@@ -16,7 +16,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.*;
 
 /*
- * Represents the main window in which the space invaders
+ * Represents the main window in which the
  * game is played
  */
 @SuppressWarnings("serial")
@@ -25,11 +25,10 @@ public class DontGetHit extends JFrame {
     private static final int INTERVAL = 20;
     private Game game;
     private MainMenuPanel mainMenuPanel;
-    private GamePanel gamePanel;
 
 
     // Constructs main window
-    // effects: sets up window in which Space Invaders game will be played
+    // effects: sets up window in which the game is played
     public DontGetHit() {
         super("Don't Get Hit");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,9 +45,7 @@ public class DontGetHit extends JFrame {
 
     private void initialize() {
         mainMenuPanel = new MainMenuPanel(game);
-//        gamePanel = new GamePanel();
         add(mainMenuPanel);
-//        add(gamePanel);
     }
 
 
