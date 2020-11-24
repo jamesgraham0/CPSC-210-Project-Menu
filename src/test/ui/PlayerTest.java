@@ -1,7 +1,7 @@
 package ui;
 
-import model.Level;
-import model.Player;
+import ui.model.Level;
+import ui.model.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

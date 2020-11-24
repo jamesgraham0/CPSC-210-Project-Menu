@@ -1,4 +1,4 @@
-package ui;
+package ui.model;
 
 import ui.constants.Constants;
 
@@ -51,7 +51,7 @@ public class Enemies {
     public boolean collidedWith(PlayerVisual p) {
         Rectangle enemyHitBox = new Rectangle(getXcoord() - SIZE_X / 2, getYcoord() - SIZE_Y / 2, SIZE_X,
                 SIZE_Y);
-        Rectangle playerHitBox = new Rectangle(p.x - 12, p.y
+        Rectangle playerHitBox = new Rectangle(p.getX() - 12, p.getY()
                 - 12, 25, 25);
         return enemyHitBox.intersects(playerHitBox);
     }

@@ -5,8 +5,8 @@ import java.awt.*;
 import javax.swing.*;
 
 
-import ui.Game;
-import model.Player;
+import ui.model.Game;
+import ui.model.Player;
 
 
 // Represents a SavedPlayerPanel

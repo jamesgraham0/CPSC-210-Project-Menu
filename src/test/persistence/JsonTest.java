@@ -1,6 +1,6 @@
 package persistence;
 
-import model.Level;
+import ui.model.Level;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

@@ -1,5 +1,6 @@
 package ui.panels;
 
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,11 +11,12 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import ui.Game;
+
 import ui.constants.Constants;
-import model.*;
+import ui.model.*;
 import persistence.FileReader;
 import persistence.FileWriter;
+
 
 // Represents a MainMenuPanel
 public class MainMenuPanel extends JPanel implements ActionListener {
@@ -34,7 +36,6 @@ public class MainMenuPanel extends JPanel implements ActionListener {
     private JButton newGameButton;
     private JButton howToPlayButton;
     private JButton backButton;
-    private Game game;
 
     private BufferedImage image;
 
@@ -49,7 +50,8 @@ public class MainMenuPanel extends JPanel implements ActionListener {
         this.fileReader = new FileReader(JSON_STORE);
 
         setPreferredSize(new Dimension(Game.WIDTH, Game.HEIGHT));
-        setBackground(Color.BLACK);
+        setBackground(Color.DARK_GRAY);
+        drawGamePanel();
         initializePlayer();
         setupPanels(g);
     }
@@ -65,7 +67,7 @@ public class MainMenuPanel extends JPanel implements ActionListener {
         add(howToPlayPanel, BorderLayout.CENTER);
         howToPlayPanel.setVisible(false);
 
-        gamePanel = new GamePanel(g);
+        gamePanel = new GamePanel();
         add(gamePanel);
         gamePanel.setVisible(false);
 
@@ -73,6 +75,19 @@ public class MainMenuPanel extends JPanel implements ActionListener {
         add(levelsButtonPanel, BorderLayout.SOUTH);
         levelsButtonPanel.setVisible(true);
 
+        setupBackgroundLabel();
+    }
+
+    // modifies: this
+    // effects: sets up and adds the background Label to this
+    private void setupBackgroundLabel() {
+        backgroundLabel = new JLabel("You've now completed this level, "
+                +  "click the back button to return to the menu");
+        backgroundLabel.setPreferredSize(new Dimension(500, 500));
+        backgroundLabel.setBackground(Color.white);
+        backgroundLabel.setForeground(Color.white);
+        add(backgroundLabel);
+        backgroundLabel.setVisible(false);
     }
 
     // effects: returns true if the savedPlayerPanel is visible, otherwise false
@@ -88,7 +103,8 @@ public class MainMenuPanel extends JPanel implements ActionListener {
         howToPlayPanel.setVisible(false);
         levelsButtonPanel.setVisible(false);
 
-        // Back button visible
+        // Make game message visible and back button
+        backgroundLabel.setVisible(true);
         backButton.setVisible(true);
 
         // Clear buttons
@@ -101,14 +117,15 @@ public class MainMenuPanel extends JPanel implements ActionListener {
     // modifies: this
     // effects: sets all the main menu ui.panels/buttons to visible, sets the game ui.panels/buttons to false
     public void regeneratePanelsAndButtons() {
-        //  make ui.panels visible
+        // Clear ui.panels
         savedPlayerPanel.setVisible(true);
         levelsButtonPanel.setVisible(true);
 
-        // Back button invisible
+        // Make game message invisible and back button invisible
+        backgroundLabel.setVisible(false);
         backButton.setVisible(false);
 
-        // make player buttons visible
+        // Clear buttons
         loadButton.setVisible(true);
         saveButton.setVisible(true);
         newGameButton.setVisible(true);
@@ -136,8 +153,6 @@ public class MainMenuPanel extends JPanel implements ActionListener {
             howToPlayPanel.setVisible(!howToPlayPanel.isVisible());
         } else if ("back".equals(e.getActionCommand())) {
             regeneratePanelsAndButtons();
-            gamePanel.setVisible(false);
-            levelsButtonPanel.setVisible(true);
         }
     }
 
@@ -229,13 +244,14 @@ public class MainMenuPanel extends JPanel implements ActionListener {
         backButton = new JButton("Back");
         backButton.addActionListener(this);
         backButton.setActionCommand("back");
+
+        add(backButton);
         backButton.setVisible(false);
 
         add(loadButton);
         add(saveButton);
         add(newGameButton);
         add(howToPlayButton);
-        add(backButton);
     }
 
     // modifies: this
@@ -252,5 +268,15 @@ public class MainMenuPanel extends JPanel implements ActionListener {
         return gamePanel;
     }
 
+    // modifies: this
+    // effects: draws the background ui.image to this
+    public void drawGamePanel() {
+        try {
+            image = ImageIO.read(new File(Constants.BACKGROUND_IMAGE_URL));
+            setPreferredSize(new Dimension(Game.WIDTH, Game.HEIGHT));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
 
 }

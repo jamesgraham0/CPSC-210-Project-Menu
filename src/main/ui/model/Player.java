@@ -1,4 +1,4 @@
-package model;
+package ui.model;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -39,15 +39,6 @@ public class Player implements Json {
 
     public Level getCurrentLevel() {
         return currentLevel;
-    }
-
-    // modifies: this, Level
-    // effects: sets the current level of the player
-    public void setLevel(Level level) {
-        if (currentLevel != level) {
-            currentLevel = level;
-            level.addPlayer(this);
-        }
     }
 
     // MODIFIES: this

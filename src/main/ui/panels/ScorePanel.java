@@ -8,8 +8,8 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 
-import ui.Game;
-import model.Player;
+import ui.model.Game;
+import ui.model.Player;
 
 
 /*
@@ -45,7 +45,7 @@ public class ScorePanel extends JPanel implements ActionListener {
     // effects:  updates the score panel with players' name and number of times they've died
     public void update() {
         nameLabel.setText(nameText + player.getPlayerName());
-        deathsLabel.setText(deathsText + player.deathCount);
+        deathsLabel.setText(deathsText + Game.getDeathCount());
         repaint();
     }
 

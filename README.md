@@ -45,3 +45,11 @@ what levels I have already completed.
 name, color, and available/locked levels.
 - As a user, I want to be able to load my previously saved file with my character's
 name, color, and available/locked levels.
+
+### **Phase 4: Task 2**
+There are several bi-directional associations within my code. One of which is shared between
+the MainMenuPanel and LevelsButtonPanel classes, where the LevelsButtonPanel is added onto
+the MainMenuPanel and is manipulated through this class depending on the user input. Most
+notably, the relationship can be viewed through the clearPanelsAndButtons() and regeneratePanelsAndButtons()
+methods in the MainMenuPanel class, and the overriden actionPerformed(ActionEvent e) method in
+the LevelsButtonPanel class.

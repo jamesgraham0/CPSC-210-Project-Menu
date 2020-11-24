@@ -8,9 +8,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 
-import ui.Game;
-import model.Level;
-import model.Player;
+import ui.model.Game;
+import ui.model.Level;
+import ui.model.Player;
 
 
 // Represents the Levels Button Panel where all levels are displayed
@@ -51,7 +51,6 @@ public class LevelsButtonPanel extends JPanel implements ActionListener {
     public void unlockLevelTwoButton() {
         levelTwoButton.setForeground(Color.black);
         levelTwoButton.setOpaque(true);
-        levelTwoButton.setBackground(new Color(0xFADC52));
     }
 
     // modifies: this
@@ -66,7 +65,6 @@ public class LevelsButtonPanel extends JPanel implements ActionListener {
     public void unlockLevelThreeButton() {
         levelThreeButton.setForeground(Color.black);
         levelThreeButton.setOpaque(true);
-        levelThreeButton.setBackground(new Color(0xF31B3B));
     }
 
     // modifies: this
@@ -95,6 +93,7 @@ public class LevelsButtonPanel extends JPanel implements ActionListener {
         levelThreeButton.addActionListener(this);
         levelThreeButton.setLayout(null);
         levelThreeButton.setOpaque(false);
+        levelThreeButton.setBackground(new Color(0xF31B3B));
 
         if (player.getNamesAvailableLevels().contains("hard")) {
             levelThreeButton.setForeground(Color.black);
@@ -112,6 +111,7 @@ public class LevelsButtonPanel extends JPanel implements ActionListener {
         levelTwoButton.addActionListener(this);
         levelTwoButton.setLayout(null);
         levelTwoButton.setOpaque(false);
+        levelTwoButton.setBackground(new Color(0xFADC52));
 
         if (player.getNamesAvailableLevels().contains("medium")) {
             levelTwoButton.setForeground(Color.black);
@@ -156,11 +156,6 @@ public class LevelsButtonPanel extends JPanel implements ActionListener {
             levelTwoButton.setForeground(Color.black);
             player.doLevel(player.level1);
 
-            if (player.getNamesAvailableLevels().contains("medium")) {
-                levelTwoButton.setBackground(new Color(0xFADC52));
-            }
-
-            mainMenuPanel.getGamePanel().setVisible(true);
 
         } else if ("two".equals(e.getActionCommand()) && player.getAvailableLevels().contains(player.level2)
                 && levelTwoButton.isOpaque()) {
@@ -169,10 +164,6 @@ public class LevelsButtonPanel extends JPanel implements ActionListener {
             levelThreeButton.setOpaque(true);
             levelThreeButton.setForeground(Color.black);
             player.doLevel(player.level2);
-
-            if (player.getNamesAvailableLevels().contains("hard")) {
-                levelThreeButton.setBackground(new Color(0xF31B3B));
-            }
 
         } else if ("three".equals(e.getActionCommand()) && player.getAvailableLevels().contains(player.level3)
                 && levelThreeButton.isOpaque()) {
@@ -189,6 +180,5 @@ public class LevelsButtonPanel extends JPanel implements ActionListener {
 
         player = new Player(" ", " ", empty1, empty2);
     }
-
 
 }
