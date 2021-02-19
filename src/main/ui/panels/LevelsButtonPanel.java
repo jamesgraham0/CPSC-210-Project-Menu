@@ -126,7 +126,7 @@ public class LevelsButtonPanel extends JPanel implements ActionListener {
     // modifies: this
     // effects: sets up level one button
     private void setupLevelOneButton() {
-        levelOneButton.setBackground(new Color(0x4AEF4A));
+        levelOneButton.setBackground(new Color(0xFF00FFC5, true));
         levelOneButton.addActionListener(this);
         levelOneButton.setLayout(null);
         levelOneButton.setActionCommand("one");
